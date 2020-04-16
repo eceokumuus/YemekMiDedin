@@ -1,0 +1,48 @@
+﻿
+<div style="border:1px solid #e1e1e1; background-color:#c1c1c1">
+    @{
+        int sayfa = Convert.ToInt32(ViewData["sayfa"]);
+        int toplamsayfa = Convert.ToInt32(ViewData["toplamsayfa"]);
+        int toplamkayit = Convert.ToInt32(ViewData["toplamkayit"]);
+
+        string controller = Request.RequestContext.RouteData.Values["controller"].ToString();
+        //string action = Request.RequestContext.RouteData.Values["action"].ToString();
+    }
+
+    @if (toplamkayit == 0)
+    {
+        <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-backward">
+    
+    <img src="~/Content/images/back.jpg" />
+</span></a>
+        <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-forward"><img src="~/Content/images/forward.jpg" /></span></a>
+    }
+    else
+    {
+        if (toplamsayfa == 1)
+        {
+            <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-backward"><img src="~/Content/images/back.jpg" /></span></a>
+            <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-forward"><img src="~/Content/images/forward.jpg" /></span></a>
+        }
+        else
+        {
+            if (sayfa == toplamsayfa - 1)
+            {
+                <a href="~/@controller/Index/?sayfa=@(sayfa-1)"><span style="margin-left:5px;" class="glyphicon glyphicon-backward"><img src="~/Content/images/back.jpg" /></span></a>
+                <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-forward"><img src="~/Content/images/forward.jpg" /></span></a>
+            }
+            else if (sayfa == 0)
+            {
+                <a href="~/@controller/Index/"><span style="margin-left:5px;" class="glyphicon glyphicon-backward"><img src="~/Content/images/back.jpg" /></span></a>
+                <a href="~/@controller/Index/?sayfa=@(sayfa+1)"><span style="margin-left:5px;" class="glyphicon glyphicon-forward"><img src="~/Content/images/forward.jpg" /></span></a>
+            }
+            else
+            {
+                <a href="~/@controller/Index/?sayfa=@(sayfa-1)"><span style="margin-left:5px;" class="glyphicon glyphicon-backward"><img src="~/Content/images/back.jpg" /></span></a>
+                <a href="~/@controller/Index/?sayfa=@(sayfa+1)"><span style="margin-left:5px;" class="glyphicon glyphicon-forward"><img src="~/Content/images/forward.jpg" /></span></a>
+            }
+
+        }
+    }
+    <span>Toplam @toplamkayit adet kayıt</span>
+</div>

@@ -1,0 +1,102 @@
+﻿@model proje.Models.FIRSAT_GALERI
+
+@{
+    ViewBag.Title = "KayitFormu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var mekan = ViewData["mekan"] as List<proje.Models.MEKAN>;
+}
+
+@using (Html.BeginForm("KayitFormu", "FirsatGaleri", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <div>
+
+        <form id="frm1" style="margin-left:15px;" method="post" action="~/FirsatGaleri/KayitFormu" class="form-horizontal">
+
+            <div class="form-group">
+                <div class="col-sm-2">@*FIRSAT_GALERI_ID*@</div>
+                <div class="col-sm-10"><input class="form-control" type="hidden" name="FIRSAT_GALERI_ID" id="FIRSAT_GALERI_ID" value="@Model.FIRSAT_GALERI_ID" /></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-4">Mekan Adı</div>
+                <div class="col-sm-10">
+                    <select class="form-control" name="MEKAN_ID" id="MEKAN_ID">
+                        @for (int i = 0; i < mekan.Count; i++)
+                        {
+                            if (mekan[i].MEKAN_ID == Model.MEKAN_ID)
+                            {
+                                <option selected value="@mekan[i].MEKAN_ID">@mekan[i].MEKAN_ADI</option>
+                            }
+                            else
+                            {
+                                <option value="@mekan[i].MEKAN_ID">@mekan[i].MEKAN_ADI</option>
+                            }
+
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(m => m.MEKAN_ID)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">Başlık</div>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="BASLIK" id="BASLIK" value="@Model.BASLIK" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-4">Durumu</div>
+                Aktif
+                @Html.RadioButtonFor(model => model.DURUMU, true)
+
+                Pasif
+                @Html.RadioButtonFor(model => model.DURUMU, false)
+            </div>
+
+     
+
+
+            <div class="form-group">
+                <div class="col-sm-4">Resim</div>
+                <div class="fileupload-new thumbnail">
+
+                    @*
+                sonra açılabilir resim yoksa sabit resim kısmı
+                @if (Model.GALERI_ID == 0)
+            {
+                <img style="width: 150px; height: 120px; padding-left:15px;" name="RESIM" src="~/Image/new.jpg" />
+            }
+            @if (Convert.ToBoolean(TempData["resimcekildimi"]) == true)
+            {
+                <img id="gelecekresim" name="RESIM" src="~/Image/test.jpg" />
+            }
+            else
+                    *@
+                    @if (Model.FIRSAT_GALERI_ID != 0)
+                    {
+                        <img style="width: 150px; height: 120px; padding-left:15px;" name="RESIM" src="/Image/@Model.RESIM" />
+                    }
+
+                </div>
+                <div class="col-sm-10">
+                    <input class="form-control" type="hidden" name="RESIM" id="RESIM" value="@Model.RESIM" />
+
+                </div>
+                <div class="col-sm-10">
+                    <input class="form-control" type="file" name="RESIM" id="RESIM" value="@Model.RESIM" />
+
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a href="~/FirsatGaleri/Index" class="btn btn-danger">Vazgeç</a>
+            </div>
+
+        </form>
+
+    </div>
+}

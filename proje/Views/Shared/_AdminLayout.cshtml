@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/menu/menu.css" rel="stylesheet" />
+    <script src="~/Content/menu/menu.js"></script>
+
+    <link href="~/Content/StyleSheet_admin.css" rel="stylesheet" />
+
+    <title>Yemek Mi Dedin Yönetim Paneli</title>
+    <style>
+
+
+        .icerik {
+            background-color: #e4e4e4; /*ARKA PLAN RENGİ AÇIK GRİ*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div id="banner" class="row">
+            <div class="col-md-2 col-md-offset-0 hidden-xs hidden-sm reset-padding-right-left">
+                <img class="logo" src="~/Content/images/logo.png" />
+            </div>
+            <div class="baslik col-sm-offset-1 col-sm-6 text-center">
+                Yemek Mi Dedin Yönetim Paneli
+            </div>
+            <div class="col-sm-offset-1 col-sm-4">
+                <a class="pull-right" style="float:right;" href="~/SiteLogin/Logout">Oturumu Kapat</a>
+                <span class="username pull-right" style="float:right;">Sevgi Ece </span>
+            </div>
+        </div>
+
+        <div id="menu" class="menu row">
+            <span id="menuyazi">MENU</span>
+            <div id="tostmenu">
+                <span class="cizgi"></span>
+                <span class="cizgi"></span>
+                <span class="cizgi"></span>
+            </div>
+            <ul>
+                <li>
+                    <a href="~/Anasayfa/Index">Anasayfa</a>
+                </li>
+                <li>
+                    <a href="~/Mekan/Index">Mekanlar</a>
+                </li>
+                <li>
+                    <a href="~/KategoriListe/Index">Kategoriler </a>
+                    <ul>
+                        <li><a href="~/AltKategoriListe/Index">Alt Kategoriler</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="~/Galeri/Index">Galeri</a>
+                </li>
+                <li>
+                    <a href="~/Firsat/Index">Fırsatlar</a>
+                    <ul>
+                        <li><a href="~/FirsatGaleri/Index">Fırsat Galeri</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="~/Uye/Index">Uyeler</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div id="icerik" class="row">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

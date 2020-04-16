@@ -1,0 +1,105 @@
+﻿.menu {
+    background-color: #a61f30; /*kırmızı*/
+    height: 40px;
+    position: relative;
+    padding-left: 5px;
+    font-family: "Open Sans";
+    margin-bottom: 10px;
+}
+
+    .menu ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        background-color: #a61f30; /*kırmızı*/
+        min-width: 150px;
+    }
+
+.menu > ul > li {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    position: relative;
+    margin-right: 10px;
+}
+
+    .menu > ul > li > ul {
+        display: none;
+        position: absolute;
+    }
+
+    .menu > ul > li:hover ul {
+        display: block;
+        cursor: pointer;
+    }
+
+#menuyazi {
+    float: left;
+    line-height: 40px;
+    color: #eeb91e; /*sarı*/
+    font-weight: bold;
+    display: none;
+}
+
+#tostmenu {
+    float: right;
+    display: none;
+    line-height: 40px;
+}
+
+#tostmenu:hover {
+    cursor:pointer;
+}
+
+.cizgi {
+    height: 5px;
+    width: 20px;
+    margin: 3px;
+    background-color: white;
+    display: block;
+}
+
+
+/*TABLET MOD*/
+@media screen and (max-width:768px) {
+    #tostmenu {
+        display: block;
+    }
+
+    #menuyazi {
+        display: block;
+    }
+
+    .menu > ul {
+        display: none;
+        clear: both;
+    }
+        .menu > ul > :hover {           
+            color: #808080;
+        }
+
+        .menu > ul > li {
+            /*MEKAN-KATEGORI-GALERI-FIRSATLAR-UYELER*/
+            display: block;
+            height: auto;
+            float: none;
+            position: static;
+           
+        }
+            .menu > ul > li a {
+                /*MEKAN-KATEGORI-GALERI-FIRSATLAR-UYELER*/
+                /*color: white;*/
+            }
+                .menu > ul > li a:hover {
+                    /*color: #808080;*/
+                }
+                    .menu > ul > li > ul {
+                        /*ALT KATEGORILER-FIRSAT GALERI*/
+                        display: block;
+                        position: static;
+                    }
+                        .menu > ul > li > ul > li:hover {
+                            /*ALT KATEGORILER-FIRSAT GALERI*/
+                            /*background-color: #8585a1;*/
+                        }                   
+}

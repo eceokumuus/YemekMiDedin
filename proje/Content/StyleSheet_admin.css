@@ -1,0 +1,105 @@
+﻿body {
+    background-color: #e4e4e4; /*gri*/
+}
+
+.reset-margin-right-left {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.reset-margin {
+    margin: 0px !important;
+}
+
+.reset-padding-right-left {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.reset-padding {
+    padding: 0px !important;
+}
+
+#banner {
+    min-height: 30px;
+    background-color: #a61f30; /*kırmızı*/
+}
+
+
+.logo {
+    height: 100px;
+    width:100px;
+    margin:auto;
+}
+
+.login-logo {
+    height: 100px;
+    width: 120px;
+    margin-left:190px;
+}
+
+.baslik {
+    font-size: 33px;
+    color: #d9d9d9; /*beyaz*/
+    font-weight: bold;
+    margin-top: 30px;
+    font-family: Times New Roman;
+    /*font-family: Sans-serif;*/
+}
+
+#toolbar {
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+}
+
+.login {
+    top: 50px;
+    padding: 20px;
+    height: 350px;
+    background-color: #f3f3f3;
+    position: absolute;
+    left: calc(40% - 85px);
+    border: 1px solid #a61f30; /*kırmızı*/
+    border-radius: 13px;
+}
+
+.field-validation-error {
+    color: #a61f30;
+    font-weight: bold;
+}
+
+    .field-validation-error:after {
+        content: "!"
+    }
+
+
+@media screen and (max-width:992px) {
+    .baslik {
+        font-size: 20px;
+        color: #eeb91e;
+        font-weight: bold;
+    }
+    #banner {
+        min-height: 40px;
+        background-color: #e4e4e4; /*gri*/
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .baslik {
+        font-size: 18px;
+        color: #eeb91e;
+        font-weight: bold;
+    }
+    #banner {
+        min-height: 30px;
+        background-color: #e4e4e4; /*gri*/
+    }
+    .logo {
+        margin:auto;
+    }
+}

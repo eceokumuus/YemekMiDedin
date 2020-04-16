@@ -1,0 +1,77 @@
+﻿body {
+    background-color: #f3f3f3;
+}
+.logo {
+    float: left;
+}
+
+    .logo > img {
+        width: 100px;
+        height: 100px;
+    }
+
+#txtarama {
+    background-color: white;
+    color: #a40c12;
+    border-radius: 5px;
+    margin-left: 200px;
+}
+
+#txtarama2 {
+    background-color: white;
+    color: #a40c12;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+#btnara {
+    background-color: #a40c12;
+    color: white;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+    #btnara:hover {
+        color: #eeb91e;
+    }
+
+#btnuyeol {
+    background-color: white;
+    color: #a40c12;
+    border-radius: 5px;
+}
+
+    #btnuyeol:hover {
+        background-color: #eeb91e;
+    }
+
+#btngirisyap {
+    background-color: white;
+    color: #a40c12;
+    border-radius: 5px;
+}
+
+    #btngirisyap:hover {
+        background-color: #eeb91e;
+    }
+#footer a {
+    font-family: Arial;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    display: block;
+    color: white;
+}
+
+    #footer a:hover {
+        display: block;
+        cursor: pointer;
+        color: #a40c12;
+    }
+@media screen and (max-width:992px) {
+
+}
+
+@media screen and (max-width:768px) {
+
+}       
+

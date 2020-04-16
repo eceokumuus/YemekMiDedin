@@ -1,0 +1,111 @@
+﻿@model List<proje.Models.MEKAN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string ara = "";
+    if (Request["ara"] != null)
+    {
+        ara = Request["ara"].ToString();
+    }
+
+    List<proje.Models.IL> iller = ViewData["iller"] as List<proje.Models.IL>;
+    List<proje.Models.ILCE> ilceler = ViewData["ilceler"] as List<proje.Models.ILCE>;
+
+    List<proje.Models.KATEGORI> kategoriler = ViewData["kategoriler"] as List<proje.Models.KATEGORI>;
+    List<proje.Models.ALT_KATEGORI> altkategoriler = ViewData["altkategoriler"] as List<proje.Models.ALT_KATEGORI>;
+
+}
+
+<script>
+    function SilOnay() {
+        var sonuc = confirm("Kayıt Silinsin mi?");
+        return sonuc;
+    }
+</script>
+
+<div id="toolbar">
+    <form id="frm1" method="post" action="~/Admin/Mekan/Ara" class="form-inline">
+        <input type="text" name="txtAra" id="txtAra" value="" class="form-control" placeholder="Mekan Adını Giriniz." />
+        <input type="submit" value="Ara" class="btn btn-outline-dark" />
+        <a href="~/Mekan/KayitFormu" class="btn btn-success">Yeni</a>
+    </form>
+</div>
+
+<div id="liste"  class="table-responsive">
+
+    <table class="table table-striped table-hover table-bordered">
+
+        <tr>
+            <th>Sil</th>
+            <th>Düzenle</th>
+            <th>Mekan Adı</th>
+            <th>Kategori Adı</th>
+            <th>Alt Kategori Adı</th>
+            <th>Adres</th>
+            <th>Açıklama</th>
+            <th>İl</th>
+            <th>İlçe</th>
+            <th>Haftaiçi Açılış Saatleri</th>
+            <th>Haftaiçi Kapanış Saatleri</th>
+            <th>Haftasonu Açılış Saatleri</th>
+            <th>Haftasonu Kapanış Saatleri</th>
+            <th>İlgili Kişi</th>
+            <th>Mekan Sahibi Kullanıcı Adı</th>
+            <th>Şifre</th>
+            <th>Mail</th>
+            <th>Telefon</th>
+            <th>Durumu</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+    <tr>
+        <td><a class="btn btn-danger" href="~/Mekan/Sil/@Model[i].MEKAN_ID" onclick="return SilOnay();">Sil</a></td>
+        <td><a class="btn btn-info" href="~/Mekan/KayitFormu/@Model[i].MEKAN_ID">Düzenle</a></td>
+        <td>@Model[i].MEKAN_ADI</td>
+        <td>
+            @if (kategoriler != null)
+            {
+                @kategoriler.Where(x => x.KATEGORI_ID == Model[i].KATEGORI_ID).FirstOrDefault().KATEGORI_ADI
+            }
+
+        </td>
+        <td>
+            @if (altkategoriler != null)
+            {
+                @altkategoriler.Where(x => x.ALT_KATEGORI_ID == Model[i].ALT_KATEGORI_ID).FirstOrDefault().ALT_KATEGORI_ADI
+            }
+
+        </td>
+        <td>@Model[i].ADRES</td>
+        <td>@Model[i].ACIKLAMA</td>
+        <td>
+            @if (iller != null)
+            {
+                @iller.Where(x => x.IL_ID == Model[i].IL_ID).FirstOrDefault().IL_ADI
+            }
+        </td>
+        <td>
+            @if (ilceler != null)
+            {
+                @ilceler.Where(x => x.ILCE_ID == Model[i].ILCE_ID).FirstOrDefault().ILCE_ADI
+            }
+        </td>
+        <td>@Model[i].HAFTAICI_ACILIS</td>
+        <td>@Model[i].HAFTAICI_KAPANIS</td>
+        <td>@Model[i].HAFTASONU_ACILIS</td>
+        <td>@Model[i].HAFTASONU_KAPANIS</td>
+        <td>@Model[i].ILGILI_KISI</td>
+        <td>@Model[i].KULLANICI_ADI</td>
+        <td>@Model[i].SIFRE</td>
+        <td>@Model[i].MAIL</td>
+        <td>@Model[i].TELEFON</td>
+        <td>@Model[i].DURUMU</td>
+    </tr>
+        }
+
+    </table>
+
+
+</div>
+@Html.Partial("_Sayfalama")

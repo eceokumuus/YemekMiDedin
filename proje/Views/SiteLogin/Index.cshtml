@@ -1,0 +1,69 @@
+﻿
+@{
+        //ViewBag.Title = "Index";
+        Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet_admin.css" rel="stylesheet" />
+
+
+    <style>
+        #YONETICI_ADI {
+            background: url("/Content/images/user.jpg") left no-repeat;
+            padding-left: 20px;
+            background-color: white;
+        }
+
+        #SIFRE {
+            background: url("/Content/images/password.jpg") left no-repeat;
+            padding-left: 20px;
+            background-color: white;
+        }
+
+        .yoneticiadı_yazi {
+            color: #a61f30; /*kırmızı*/
+        }
+
+        .sifreyazi {
+            color: #a61f30; /*kırmızı*/
+        }
+    </style>
+</head>
+<body>
+    <div class="login col-sm-offset-4 col-sm-5">
+        <span style="color:red;">@TempData["Mesaj"]</span>
+        <form id="frm1" method="post" action="~/SiteLogin/Login" class="form-horizontal">
+         
+                <div class="form-group">
+                    <img class="login-logo col-sm-12 col-md-12 col-lg-12" height="200" src="~/Content/images/logo.png" />
+                </div>
+           
+            
+            <div class="form-group">
+                <div class="yoneticiadı_yazi col-sm-4 offset-2">Yönetici Adı</div>
+                <div class="col-sm-8 offset-2">
+                    <input class="form-control" type="text" name="YONETICI_ADI" id="YONETICI_ADI" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="sifreyazi col-sm-4 offset-2">Şifre</div>
+                <div class="col-sm-8 offset-2">
+                    <input class="form-control" type="password" name="SIFRE" id="SIFRE" placeholder="" />
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Giriş Yap" class="btn btn-giris"  />
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

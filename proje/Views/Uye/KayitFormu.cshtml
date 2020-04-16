@@ -1,0 +1,153 @@
+﻿@model proje.Models.UYE
+@{
+    ViewBag.Title = "KayitFormu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var il = ViewData["il"] as List<proje.Models.IL>;
+}
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckfinder/ckfinder.js"></script>
+
+<script>
+
+    $().ready(function () {
+        $("#IL_ID").change(function () {
+            var ilceid=@Model.ILCE_ID;
+
+                $.ajax(
+                {
+                    url: "/Uye/Ilce",
+                    data: "ilid=" + $("#IL_ID").val(),
+                    dataType: "json",
+                    type: "POST",
+                    success: function (veri) {
+                        //debugger;
+                        $("#ILCE_ID").html("");
+                        for (var i = 0; i < veri.length; i++) {
+
+                                if (ilceid == parseInt( veri[i]["ILCE_ID"])) {
+                                    var opt = "<option selected value='" + veri[i]["ILCE_ID"] + "'>"
+                                    + veri[i]["ILCE_ADI"] + "</option>";
+                                }
+                                else {
+                                    var opt = "<option value='" + veri[i]["ILCE_ID"] + "'>"
+                                    + veri[i]["ILCE_ADI"] + "</option>";
+                                }
+
+                            $("#ILCE_ID").append(opt);
+                        }
+                    },
+                    error: function (hata) {
+                        alert(hata.statusText);
+                    }
+                });
+        });
+
+        $("#IL_ID").change();//kod ile chanege olayı tetikleniyor
+    });
+
+</script>
+
+<div>
+
+    <form id="frm1" style="margin-left:15px;" method="post" action="~/Uye/KayitFormu" class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-sm-6">@*Üye Id*@</div>
+            <div class="col-sm-10"><input class="form-control" type="hidden" name="UYE_ID" id="UYE_ID" value="@Model.UYE_ID" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">Üye Adı</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="ADI" id="ADI" value="@Model.ADI" />
+                @Html.ValidationMessageFor(m => m.ADI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">Üye Soyadı</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="SOYADI" id="SOYADI" value="@Model.SOYADI" />
+                @Html.ValidationMessageFor(m => m.SOYADI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">Kullanıcı Adı</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="KULLANICI_ADI" id="KULLANICI_ADI" value="@Model.KULLANICI_ADI" />
+                @Html.ValidationMessageFor(m => m.KULLANICI_ADI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">Şifre</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="SIFRE" id="SIFRE" value="@Model.SIFRE" />
+                @Html.ValidationMessageFor(m => m.SIFRE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">E-posta</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="EPOSTA" id="EPOSTA" value="@Model.EPOSTA" />
+                @Html.ValidationMessageFor(m => m.EPOSTA)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">Telefon</div>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="TELEFON" id="TELEFON" value="@Model.TELEFON" />
+                @Html.ValidationMessageFor(m => m.TELEFON)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">İl</div>
+            <div class="col-sm-10">
+                <select class="form-control" name="IL_ID" id="IL_ID">
+                    @for (int i = 0; i < il.Count; i++)
+                    {
+                        if (il[i].IL_ID == Model.IL_ID)
+                        {
+                            <option selected id="selectedkategori" value="@il[i].IL_ID">@il[i].IL_ADI</option>
+                        }
+                        else
+                        {
+                            <option value="@il[i].IL_ID">@il[i].IL_ADI</option>
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(m => m.IL_ID)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-4">İlçe</div>
+            <div class="col-sm-10">
+                <select class="form-control" name="ILCE_ID" id="ILCE_ID"></select>
+                @Html.ValidationMessageFor(m => m.ILCE_ID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4">Durumu</div>
+            Aktif
+            @Html.RadioButtonFor(model => model.DURUMU, true)
+
+            Pasif
+            @Html.RadioButtonFor(model => model.DURUMU, false)
+        </div>
+
+        <div class="text-center">
+            <input type="submit" value="Kaydet" class="btn btn-default" />
+            <a href="~/Uye/Index" class="btn btn-danger">Vazgeç</a>
+        </div>
+    </form>
+
+</div>
+

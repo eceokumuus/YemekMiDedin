@@ -1,0 +1,95 @@
+﻿@{
+    proje.Models.Model1 db = new proje.Models.Model1();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - FRONTEND</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/StyleSheet_id.css" rel="stylesheet" />
+    <style>
+        #banner {
+            background:yellow;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="usttaraf" style="margin:auto; height:100px; width:80%;">
+        <div class="container">
+            <div class="row" style="height:100px; float:left;">
+                <div class="logo">
+                    <img src="~/Content/images/logo.png" />
+                </div>
+            </div>
+
+            <div class="row" style="height:70px; float:left; margin-top:30px;">
+                <form action="/Home/Arama" method="post" id="frm2">
+                    <input type="text" id="txtarama" name="txtarama" class="arama" />
+                    <input type="text" id="txtarama2" name="txtarama2" class="arama" placeholder="Restorant, konum ara..." />
+                    <input type="submit" value="Ara" id="btnara" />
+                </form>
+            </div>
+
+            <div class="row" style="height:100px; float:right;">
+                <form action="/Home/Üyeol" method="post" id="frm1">
+                    <input type="submit" value="Üye Ol" id="btnuyeol" />
+                    <input type="submit" value="Giriş Yap" id="btngirisyap" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="banner" style="margin:auto; width:80%; height:300px;">
+        <div class="container">
+              
+        </div>
+    </div>
+   
+
+    <div id="icerik" style="margin:auto; width:80%; height:600px; background-color:white;">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                   @RenderBody();
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer" style="float:left; height:100px; width:100%; background-color:#484747;">
+        <div class="container">
+            <div class="row">
+                <div class="hakkimizda" style="width:33.33%;">
+                    <a>HAKKIMIZDA</a>
+                </div>
+                <div class="bizeulasin" style="width:33.33%;">
+                    <a>BİZE ULAŞIN</a>
+                </div>
+                <div class="sosyal-icon" style="width:33.33%;">
+                    <img src="~/Content/iconlar/facebook.png" />
+                    <img src="~/Content/iconlar/instagram.png" />
+                    <img src="~/Content/iconlar/twitter.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
